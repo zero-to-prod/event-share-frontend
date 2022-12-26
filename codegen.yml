@@ -1,0 +1,10 @@
+documents: ./src/**/*.gql
+schema: ${VITE_GRAPHQL_API}
+generates:
+  src/lib/gql/generated.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - graphql-codegen-svelte-apollo
+    config:
+      clientPath: ../Client

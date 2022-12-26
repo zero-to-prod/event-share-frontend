@@ -1,0 +1,8 @@
+query GetUser {
+    user(id: 1) {
+        id
+        name
+        email
+        created_at
+    }
+}
