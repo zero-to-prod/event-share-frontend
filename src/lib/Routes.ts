@@ -1,3 +1,4 @@
 export enum Routes {
-	ping = 'ping'
+	ping = 'ping',
+	ues = 'ues'
 }

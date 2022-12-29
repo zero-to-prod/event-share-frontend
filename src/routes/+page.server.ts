@@ -1,5 +1,5 @@
-import GetPing from '$lib/api/GetPing';
+import UeCreate from '$lib/api/UeCreate';
 
 export const load = async () => {
-	return GetPing();
+	return UeCreate();
 };
