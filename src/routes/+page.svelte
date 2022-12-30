@@ -37,10 +37,3 @@
 	<br />
 	<a data-sveltekit-preload-data="hover" href={`/${data.id}`}>View Event</a>
 {/if}
-
-<style>
-	form {
-		display: table-caption;
-		margin: auto;
-	}
-</style>
