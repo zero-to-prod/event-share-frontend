@@ -1,2 +1,46 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import UeCreate from '$lib/api/UeCreate';
+	import type { Ue } from '$lib/types';
+
+	let name: Ue['name'];
+	let time: Ue['time'];
+	let location: Ue['location'];
+	let description: Ue['description'];
+	let data: Ue;
+
+	async function onSubmit() {
+		data = await UeCreate({ name, time, location, description });
+	}
+</script>
+
+<form on:submit|preventDefault={onSubmit}>
+	<label>
+		Name
+		<input bind:value={name} />
+	</label>
+	<label>
+		Date
+		<input bind:value={time} type="datetime-local" />
+	</label>
+	<label>
+		Location
+		<input bind:value={location} />
+	</label>
+	<label>
+		Description
+		<textarea bind:value={description} />
+	</label>
+	<button type="submit">Create</button>
+</form>
+
+{#if data}
+	<br />
+	<a data-sveltekit-preload-data="hover" href={`/${data.id}`}>View Event</a>
+{/if}
+
+<style>
+	form {
+		display: table-caption;
+		margin: auto;
+	}
+</style>
