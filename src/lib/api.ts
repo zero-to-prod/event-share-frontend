@@ -1,12 +1,5 @@
 import { env } from '$env/dynamic/public';
-import type { Routes } from '$lib/Routes';
 import { error } from '@sveltejs/kit';
-
-interface SendParams {
-	method: RequestInit['method'];
-	path: Routes;
-	body?: object | null | undefined;
-}
 
 async function send({ method, path, body }: SendParams) {
 	const init: RequestInit = { method };
@@ -32,10 +25,16 @@ export function post(params: PostParams) {
 }
 
 export interface GetParams {
-	path: Routes;
+	path: string;
 }
 
 export interface PostParams {
-	path: Routes;
+	path: string;
 	body: SendParams['body'];
+}
+
+interface SendParams {
+	method: RequestInit['method'];
+	path: string;
+	body?: object | null | undefined;
 }
