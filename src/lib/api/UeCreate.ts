@@ -8,4 +8,7 @@ export default async function UeCreate(body?: UeCreate): Promise<Ue> {
 
 export interface UeCreate {
 	name?: string;
+	time?: string;
+	location?: string;
+	description?: string;
 }
