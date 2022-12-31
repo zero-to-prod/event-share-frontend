@@ -12,6 +12,18 @@
 	async function onSubmit() {
 		data = await UeCreate({ name, time, location, description });
 	}
+	const share = async () => {
+		try {
+			// noinspection TypeScriptValidateTypes
+			await navigator.share({
+				title: 'Share this event',
+				text: `${data.name} | ${data.description}`,
+				url: `${window.location}${data.id}`
+			});
+		} catch (err) {
+			console.log(err);
+		}
+	};
 </script>
 
 <div class="py-10 bg-gradient-to-r from-violet-500 to-fuchsia-500">
@@ -39,7 +51,7 @@
 								d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
 							/></svg
 						></span
-					>Create Link</button
+					>Get Link</button
 				>
 			</div>
 		</form>
@@ -47,6 +59,7 @@
 
 	{#if data}
 		<div class="grid gap-2">
+			<button on:click={share}> Share </button>
 			<a data-sveltekit-preload-data="hover" href={`/${data.id}`}>View Event</a>
 			<div class="flex">
 				<div class="flex-1 rounded bg-gray-100">
