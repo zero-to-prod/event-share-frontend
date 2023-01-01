@@ -8,11 +8,11 @@
 	let time: string | undefined = undefined;
 	let location: Ue['location'];
 	let description: Ue['description'];
-	let data: Ue;
+	let ue: Ue;
 
 	$: required = !!time;
 
-	let combined = () => {
+	let combined_time = () => {
 		if (date && time) {
 			return `${date}T${time}`;
 		}
@@ -22,30 +22,32 @@
 	};
 
 	async function onSubmit() {
-		data = await UeCreate({ name, time: combined(), location, description });
+		ue = await UeCreate({ name, time: combined_time(), location, description });
 	}
 	const select = (event: MouseEvent & { currentTarget: EventTarget & HTMLInputElement }) =>
 		event.currentTarget.select();
 	const share = async () => {
 		try {
-			// noinspection TypeScriptValidateTypes
-			await navigator.share({
-				title: 'Share this event',
-				text: `${data.name} | ${data.description}`,
-				url: `${window.location}${data.id}`
-			});
+			const title = `${ue.name} ${ue.time ? new Date(ue.time).toDateString() : ''}`;
+			const description = ue.description ? '| ' + ue.description : '';
+			const data = {
+				title: title,
+				text: `${title} ${description}`,
+				url: `${window.location}${ue.id}`
+			};
+			await navigator.share(data);
 		} catch (err) {
 			console.log(err);
 		}
 	};
 </script>
 
-<div class="py-10 bg-gradient-to-r from-violet-500 to-fuchsia-500">
-	<div class="gap-4 m-4 p-4 bg-gray-800 lg:w-1/3 md:w-1/2 rounded-md">
-		<h1 class="text-white text-2xl text-center">Create an Event</h1>
-		<form on:submit|preventDefault={onSubmit} class="flex flex-col space-y-4">
+<div class="bg-gradient-to-r from-violet-500 to-fuchsia-500 py-10">
+	<div class="m-4 gap-4 shadow rounded-2xl bg-gray-800 p-4 md:w-1/2 lg:w-1/3">
+		<h1 class="text-center text-2xl text-white">Create an Event</h1>
+		<form on:submit|preventDefault={onSubmit} class="flex flex-col ">
 			<label>
-				<span class="text-white text-lg ml-1">Name</span>
+				<span class="label">Name</span>
 				<input
 					bind:value={name}
 					name="name"
@@ -56,9 +58,9 @@
 					autocomplete="off"
 				/>
 			</label>
-			<div class="flex flex-col xs:flex-row gap-4">
-				<label class="w-full ">
-					<span class="text-white text-lg ml-1">Date</span>
+			<div class="flex flex-col gap-4 xs:flex-row">
+				<label class="w-full">
+					<span class="label">Date</span>
 					<input
 						bind:value={date}
 						name="date"
@@ -68,13 +70,13 @@
 					/>
 				</label>
 				<label class="w-full">
-					<span class="text-white text-lg ml-1">Time</span>
+					<span class="label">Time</span>
 					<input bind:value={time} name="time" type="time" />
 				</label>
 			</div>
 
 			<label>
-				<span class="text-white text-lg ml-1">Description</span>
+				<span class="label">Description</span>
 				<textarea
 					bind:value={description}
 					name="description"
@@ -83,7 +85,7 @@
 				/>
 			</label>
 
-			<button type="submit" class="create-link mt-2"
+			<button type="submit" class="mt-4 create-link"
 				><span
 					><svg
 						class="h-4 mr-1.5 fill-gray-800"
@@ -97,11 +99,11 @@
 				>Get Link</button
 			>
 		</form>
-		{#if data}
-			<div class="rounded flex gap-4">
-				<label class="text-white w-full">
+		{#if ue}
+			<div class="flex gap-4 rounded">
+				<label class="w-full text-white">
 					Shareable Link
-					<input class="text-sm bg-gray-300" on:click={select} value={`${$page.url}${data.id}`} />
+					<input class="bg-gray-300 text-sm" on:click={select} value={`${$page.url}${ue.id}`} />
 				</label>
 				<div class="mt-auto">
 					<button type="submit" class="share-link" on:click={share}
@@ -129,12 +131,15 @@
 	}
 	input,
 	textarea {
-		@apply mt-1 block w-full rounded-md p-2 text-lg text-gray-700 focus:border-fuchsia-500 focus:outline-0 focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-gray-800 focus:ring-offset-2;
+		@apply mt-1 block w-full rounded-md p-2 text-lg text-gray-700 focus:border-fuchsia-500 focus:outline-0 focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-2 focus:ring-offset-gray-800;
 	}
 	.create-link {
 		@apply justify-center inline-flex rounded-md items-center border border-transparent bg-fuchsia-600 px-4 py-3.5 font-medium leading-4 text-white shadow-sm hover:bg-fuchsia-700 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-gray-800 focus:ring-offset-2;
 	}
 	.share-link {
 		@apply inline-flex rounded-md items-center border border-transparent bg-blue-600 px-4 py-3.5 font-medium leading-4 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-gray-800 focus:ring-offset-2;
+	}
+	.label {
+		@apply ml-1 text-lg text-white;
 	}
 </style>
