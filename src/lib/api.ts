@@ -1,7 +1,10 @@
 import { env } from '$env/dynamic/public';
 import { error } from '@sveltejs/kit';
+import { loading } from '../stores';
 
 async function send({ method, path, body }: SendParams) {
+	loading.set(true);
+
 	const init: RequestInit = { method };
 	if (body) {
 		init.headers = { 'Content-Type': 'application/json' };
@@ -10,9 +13,11 @@ async function send({ method, path, body }: SendParams) {
 	const [res] = await Promise.all([fetch(`${env.PUBLIC_API}/${path}`, init)]);
 	if (res.ok || res.status === 422) {
 		const text = await res.text();
+		loading.set(false);
 		return text ? JSON.parse(text) : {};
 	}
 
+	loading.set(false);
 	throw error(res.status);
 }
 
