@@ -113,16 +113,16 @@
           {#if isLoading}
             <Loader />
           {:else}
-						<span
-            ><svg
-              class="h-4 mr-1.5 fill-gray-800"
-              focusable="false"
-              aria-hidden="true"
-              viewBox="2 5 20 12"
-            ><path
-              d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
-            /></svg
-            ></span
+            <span
+              ><svg
+                class="h-4 mr-1.5 fill-gray-800"
+                focusable="false"
+                aria-hidden="true"
+                viewBox="2 5 20 12"
+                ><path
+                  d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
+                /></svg
+              ></span
             >
 
             Get Link
@@ -131,7 +131,7 @@
       </form>
     </div>
     {#if ue}
-      <div class="flex gap-4 pt-2 border-gray-600 mt-4" transition:slide>
+      <div class="flex pt-4 gap-4 border-gray-600 mt-4" transition:slide>
         <label class="w-full text-white">
           Shareable Link
           <input
@@ -141,14 +141,27 @@
           />
         </label>
         <div class="mt-auto">
+          <a href={`${$page.url}${ue.id}`} target="_blank">
+            <button type="submit" class="view-link"
+              ><span
+                ><svg class="h-4 mr-2" focusable="false" aria-hidden="true" viewBox="0 0 22 22"
+                  ><path
+                    d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                  /></svg
+                ></span
+              >View</button
+            >
+          </a>
+        </div>
+        <div class="mt-auto">
           <button type="submit" class="share-link" on:click={share}
-          ><span
-          ><svg class="h-4 mr-2" focusable="false" aria-hidden="true" viewBox="0 0 22 22"
-          ><path
-            d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
-          /></svg
-          ></span
-          >Share</button
+            ><span
+              ><svg class="h-4 mr-2" focusable="false" aria-hidden="true" viewBox="0 0 22 22"
+                ><path
+                  d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+                /></svg
+              ></span
+            >Share</button
           >
         </div>
       </div>
@@ -157,22 +170,25 @@
 </div>
 
 <style lang="postcss">
-    label {
-        @apply mt-1;
-    }
-    .input {
-        @apply mt-1 block w-full rounded-md p-2 text-lg text-gray-700 focus:border-fuchsia-500 focus:outline-0 focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-2 focus:ring-offset-gray-800;
-    }
-    .ring-color-blue {
-        @apply focus:border-blue-500 focus:ring-blue-500;
-    }
-    .create-link {
-        @apply justify-center inline-flex rounded-md items-center border border-transparent bg-fuchsia-600 px-4 py-3.5 font-medium leading-4 text-white shadow-sm hover:bg-fuchsia-700 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-gray-800 focus:ring-offset-2;
-    }
-    .share-link {
-        @apply inline-flex rounded-md items-center border border-transparent bg-blue-600 px-4 py-3.5 font-medium leading-4 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-gray-800 focus:ring-offset-2;
-    }
-    .label {
-        @apply ml-1 text-lg text-white;
-    }
+  label {
+    @apply mt-1;
+  }
+  .input {
+    @apply mt-1 block w-full rounded-md p-2 text-lg text-gray-700 focus:border-fuchsia-500 focus:outline-0 focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-2 focus:ring-offset-gray-800;
+  }
+  .ring-color-blue {
+    @apply focus:border-blue-500 focus:ring-blue-500;
+  }
+  .create-link {
+    @apply justify-center inline-flex rounded-md items-center border border-transparent bg-fuchsia-600 px-4 py-3.5 font-medium leading-4 text-white shadow-sm hover:bg-fuchsia-700 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-gray-800 focus:ring-offset-2;
+  }
+  .share-link {
+    @apply inline-flex rounded-md items-center border border-transparent bg-blue-600 px-4 py-3.5 font-medium leading-4 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-gray-800 focus:ring-offset-2;
+  }
+  .view-link {
+    @apply inline-flex rounded-md items-center bg-gray-600 border border-transparent  px-4 py-3.5 font-medium leading-4 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-gray-800 focus:ring-offset-2;
+  }
+  .label {
+    @apply ml-1 text-lg text-white;
+  }
 </style>
