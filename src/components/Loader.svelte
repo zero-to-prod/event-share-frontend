@@ -17,10 +17,10 @@
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     transform: translateZ(0);
-    -webkit-animation: load8 1s infinite linear;
-    animation: load8 1s infinite linear;
+    -webkit-animation: spin 1s infinite linear;
+    animation: spin 1s infinite linear;
   }
-  @-webkit-keyframes load8 {
+  @-webkit-keyframes spin {
     0% {
       -webkit-transform: rotate(0deg);
       transform: rotate(0deg);
@@ -30,7 +30,7 @@
       transform: rotate(360deg);
     }
   }
-  @keyframes load8 {
+  @keyframes spin {
     0% {
       -webkit-transform: rotate(0deg);
       transform: rotate(0deg);
