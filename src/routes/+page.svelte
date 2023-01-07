@@ -62,7 +62,7 @@
   };
 </script>
 
-<div class="bg-gradient-to-r from-violet-500 to-fuchsia-500 py-10">
+<div class="hero-bg py-10">
   <div class="m-4 shadow rounded-2xl bg-gray-800 p-4 md:w-1/2 lg:w-1/3 divide-y">
     <div>
       <h1 class="text-center text-2xl text-white">Create an Event</h1>
@@ -141,7 +141,7 @@
           />
         </label>
         <div class="mt-auto">
-          <a href={`${$page.url}${ue.id}`} target="_blank">
+          <a href={`${$page.url}${ue.id}`} target="_blank" rel="noreferrer">
             <button type="submit" class="view-link"
               ><span
                 ><svg class="h-4 mr-2" focusable="false" aria-hidden="true" viewBox="0 0 22 22"
