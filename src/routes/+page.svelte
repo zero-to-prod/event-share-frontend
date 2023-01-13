@@ -2,10 +2,8 @@
   import UeCreate from '$lib/api/UeCreate';
   import type { Ue } from '$lib/types';
   import { page } from '$app/stores';
-  import { slide } from 'svelte/transition';
   import { localLoading } from '../stores';
   import Loader from '../components/Loader.svelte';
-  import { fade } from 'svelte/transition';
 
   let name: Ue['name'];
   let date: string | undefined = undefined;
@@ -109,7 +107,7 @@
           />
         </label>
 
-        <button type="submit" class="mt-4 create-link" disabled={isLoading} transition:fade>
+        <button type="submit" class="mt-4 create-link" disabled={isLoading}>
           {#if isLoading}
             <Loader />
           {:else}
@@ -131,7 +129,7 @@
       </form>
     </div>
     {#if ue}
-      <div class="flex pt-4 gap-4 border-gray-600 mt-4" transition:slide>
+      <div class="flex pt-4 gap-4 border-gray-600 mt-4">
         <label class="w-full text-white">
           Shareable Link
           <input
@@ -141,7 +139,7 @@
           />
         </label>
         <div class="mt-auto">
-          <a href={`${$page.url}${ue.id}`} target="_blank" rel="noreferrer">
+          <a href={`${$page.url}${ue.id}`}>
             <button type="submit" class="view-link"
               ><span
                 ><svg class="h-4 mr-2" focusable="false" aria-hidden="true" viewBox="0 0 22 22"
