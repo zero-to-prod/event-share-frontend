@@ -1,3 +1,7 @@
+<script lang="ts">
+  import ThemeSwitch from '$lib/ThemeSwitch.svelte';
+</script>
+
 <nav class="bg-gray-800">
   <div class="mx-auto max-w-7xl px-2">
     <div class="relative flex h-16 items-center justify-between">
@@ -11,6 +15,7 @@
           </a>
         </div>
       </div>
+      <ThemeSwitch />
     </div>
   </div>
 </nav>

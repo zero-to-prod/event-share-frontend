@@ -60,9 +60,9 @@
   };
 </script>
 
-<div class="hero-bg py-10">
-  <div class="max-w-7xl mx-auto">
-    <div class="m-4 shadow rounded-2xl bg-gray-800 p-4 md:w-1/2 lg:w-1/3 divide-y">
+<div class="background sm:hero-bg py-10">
+  <div class="sm:max-w-7xl mx-auto">
+    <div class="sm:m-4 sm:shadow sm:rounded-2xl paper p-4 md:w-1/2 lg:w-1/3 divide-y">
       <div>
         <h1 class="text-center text-2xl text-white">Create an Event</h1>
         <form on:submit|preventDefault={onSubmit} class="flex flex-col ">
