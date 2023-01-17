@@ -64,8 +64,8 @@
   <div class="sm:max-w-7xl mx-auto">
     <div class="sm:m-4 sm:shadow sm:rounded-2xl paper p-4 md:w-1/2 lg:w-1/3 divide-y">
       <div>
-        <h1 class="text-center text-2xl text-white">Create an Event</h1>
-        <form on:submit|preventDefault={onSubmit} class="flex flex-col ">
+        <h1>Create an Event</h1>
+        <form on:submit|preventDefault={onSubmit}>
           <label>
             <span class="label">Name</span>
             <input
@@ -131,7 +131,7 @@
       </div>
       {#if ue}
         <div class="flex pt-4 gap-4 border-gray-600 mt-4">
-          <label class="w-full text-white">
+          <label class="w-full">
             Shareable Link
             <input
               class="input ring-color-blue bg-gray-300 text-xs "
@@ -174,21 +174,21 @@
     @apply mt-1;
   }
   .input {
-    @apply mt-1 block w-full rounded-md p-2 text-lg text-gray-700 focus:border-fuchsia-500 focus:outline-0 focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-2 focus:ring-offset-gray-800;
+    @apply focus:border-fuchsia-500 focus:outline-0 focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-2 focus:ring-offset-gray-800;
   }
   .ring-color-blue {
     @apply focus:border-blue-500 focus:ring-blue-500;
   }
   .create-link {
-    @apply justify-center inline-flex rounded-md items-center border border-transparent bg-fuchsia-600 px-4 py-3.5 font-medium leading-4 text-white shadow-sm hover:bg-fuchsia-700 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-gray-800 focus:ring-offset-2;
+    @apply justify-center inline-flex rounded-md items-center border border-transparent bg-fuchsia-600 px-4 py-3.5 font-medium leading-4 shadow-sm hover:bg-fuchsia-700 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-gray-800 focus:ring-offset-2;
   }
   .share-link {
-    @apply inline-flex rounded-md items-center border border-transparent bg-blue-600 px-4 py-3.5 font-medium leading-4 text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-gray-800 focus:ring-offset-2;
+    @apply inline-flex rounded-md items-center border border-transparent bg-blue-600 px-4 py-3.5 font-medium leading-4 shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-gray-800 focus:ring-offset-2;
   }
   .view-link {
-    @apply inline-flex rounded-md items-center bg-gray-600 border border-transparent  px-4 py-3.5 font-medium leading-4 text-white shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-gray-800 focus:ring-offset-2;
+    @apply inline-flex rounded-md items-center bg-gray-600 border border-transparent  px-4 py-3.5 font-medium leading-4 shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-gray-800 focus:ring-offset-2;
   }
   .label {
-    @apply ml-1 text-lg text-white;
+    @apply ml-1;
   }
 </style>
