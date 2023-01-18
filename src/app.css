@@ -1,30 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "styles/base.css";
 
-@layer base {
+@import "tailwindcss/components";
 
-    body {
-        @apply bg-white dark:bg-black text-black dark:text-white;
-    }
 
-    h1 {
-        @apply text-2xl sm:text-3xl;
-    }
-
-    label {
-        @apply sm:text-lg;
-    }
-
-    input, textarea {
-        @apply sm:text-lg bg-gray-100 dark:bg-black border dark:border-gray-700 border-gray-300 block w-full rounded p-1 sm:p-2 mt-[.125rem] sm:mt-1;
-    }
-
-    form {
-        @apply flex flex-col  space-y-1 sm:space-y-2;
-    }
-
-}
+@import "tailwindcss/utilities";
 
 @layer components {
     .hero-bg {

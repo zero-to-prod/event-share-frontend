@@ -60,11 +60,11 @@
   };
 </script>
 
-<div class="background sm:hero-bg py-10">
+<div class="background py-10">
   <div class="sm:max-w-7xl mx-auto">
     <div class="sm:m-4 sm:shadow sm:rounded-2xl paper p-4 md:w-1/2 lg:w-1/3 divide-y">
       <div>
-        <h1>Create an Event</h1>
+        <h1 class="text-primary">Create an Event</h1>
         <form on:submit|preventDefault={onSubmit}>
           <label>
             <span class="label">Name</span>
@@ -79,7 +79,7 @@
               autocomplete="off"
             />
           </label>
-          <div class="flex flex-col gap-4 xs:flex-row">
+          <div class="flex flex-col gap-4 min-[365px]:flex-row">
             <label class="w-full">
               <span class="label">Date</span>
               <input
