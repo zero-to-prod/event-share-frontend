@@ -66,22 +66,23 @@
       <div>
         <h1>Create an Event</h1>
         <form on:submit|preventDefault={onSubmit}>
-          <label>
-            <span class="label">Name</span>
-            <input
-              bind:value={name}
-              class="input"
-              name="name"
-              minlength="2"
-              maxlength="250"
-              placeholder="Event name"
-              required
-              autocomplete="off"
-            />
+          <label for="name">
+            <span>Name</span>
           </label>
+          <input
+            bind:value={name}
+            class="input"
+            name="name"
+            minlength="2"
+            maxlength="250"
+            placeholder="Event name"
+            required
+            autocomplete="off"
+          />
+
           <div class="flex flex-col gap-4 min-[365px]:flex-row">
             <label class="w-full">
-              <span class="label">Date</span>
+              <span>Date</span>
               <input
                 bind:value={date}
                 class="input"
@@ -92,13 +93,13 @@
               />
             </label>
             <label class="w-full">
-              <span class="label">Time</span>
+              <span>Time</span>
               <input class="input" bind:value={time} name="time" type="time" />
             </label>
           </div>
 
           <label>
-            <span class="label">Description</span>
+            <span>Description</span>
             <textarea
               bind:value={description}
               class="input"
@@ -170,9 +171,6 @@
 </div>
 
 <style lang="postcss">
-  label {
-    @apply mt-1;
-  }
   .input {
     @apply focus:border-fuchsia-500 focus:outline-0 focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-2 focus:ring-offset-gray-800;
   }
