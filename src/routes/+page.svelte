@@ -60,11 +60,11 @@
   };
 </script>
 
-<div class="background py-10">
+<div class="bg-secondary-content py-10">
   <div class="sm:max-w-7xl mx-auto">
-    <div class="sm:m-4 sm:shadow sm:rounded-2xl paper p-4 md:w-1/2 lg:w-1/3 divide-y">
+    <div class="bg-base-100 sm:m-4 sm:shadow sm:rounded-2xl p-4 md:w-1/2 lg:w-1/3 divide-y">
       <div>
-        <h1 class="text-primary">Create an Event</h1>
+        <h1>Create an Event</h1>
         <form on:submit|preventDefault={onSubmit}>
           <label>
             <span class="label">Name</span>

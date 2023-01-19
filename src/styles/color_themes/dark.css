@@ -1,0 +1,12 @@
+.dark {
+    --primary: #570df8;
+    --primary-focus: #5114b9;
+    --primary-content: #ffffff;
+    --secondary: #d926aa;
+    --secondary-focus: #ae1e88;
+    --secondary-content: #ffffff;
+    --neutral: #191d24;
+    --base-100: #2a303c;
+    --base-200: #242933;
+    --base-content: #a6adbb;
+}

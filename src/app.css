@@ -1,20 +1,14 @@
 @import "tailwindcss/base";
 @import "styles/base.css";
+@import "styles/color_themes/root.css";
+@import "styles/color_themes/dark.css";
 
 @import "tailwindcss/components";
-
 
 @import "tailwindcss/utilities";
 
 @layer components {
     .hero-bg {
         @apply bg-gradient-to-r from-violet-500 to-fuchsia-500;
-    }
-    .paper {
-        @apply bg-white dark:bg-gray-800
-    }
-
-    .background {
-        @apply bg-gray-100 dark:bg-gray-900
     }
 }

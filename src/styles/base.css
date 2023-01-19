@@ -1,5 +1,5 @@
 body {
-    @apply bg-base-100 dark:bg-black text-black dark:text-white;
+    @apply bg-base-100 text-base-content;
 }
 
 h1 {
@@ -7,7 +7,7 @@ h1 {
 }
 
 input, textarea {
-    @apply sm:text-lg dark:bg-black border dark:border-gray-700 border-gray-300 rounded block w-full p-1 sm:p-2 mt-[.125rem] sm:mt-1;
+    @apply bg-base-100 sm:text-lg border rounded block w-full p-1 sm:p-2 mt-[.125rem] sm:mt-1;
 }
 
 label {
