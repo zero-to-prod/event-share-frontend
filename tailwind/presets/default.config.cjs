@@ -19,7 +19,7 @@ module.exports = {
         'base-100': "var(--base-100)", // Base color of page, used for blank backgrounds
         'base-200': "var(--base-200)", // Base color, a little darker
         'base-content': "var(--base-content)" // Foreground content color to use on base color
-      }
+      },
     }
   }
 };

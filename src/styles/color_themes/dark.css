@@ -9,4 +9,6 @@
     --base-100: #2a303c;
     --base-200: #242933;
     --base-content: #a6adbb;
+    --border-opacity: .2;
+    --border-color: 220 13.376% 69.216%;
 }

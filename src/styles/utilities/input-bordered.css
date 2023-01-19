@@ -1,0 +1,5 @@
+.input-bordered {
+    border-width: 1px;
+    border-style: solid;
+    border-color: hsl(var(--border-color)/var(--border-opacity));
+}

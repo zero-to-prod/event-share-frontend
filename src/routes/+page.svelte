@@ -60,82 +60,156 @@
   };
 </script>
 
-<div class="bg-secondary-content py-10">
-  <div class="sm:max-w-7xl mx-auto">
-    <div class="bg-base-100 sm:m-4 sm:shadow sm:rounded-2xl p-4 md:w-1/2 lg:w-1/3 divide-y">
+<div class="py-10">
+  <div class="max-w-7xl m-auto">
+    <div class="lg:pl-10 lg:pb-32">
       <div>
-        <h1>Create an Event</h1>
-        <form on:submit|preventDefault={onSubmit}>
-          <label for="name">
-            <span>Name</span>
-          </label>
-          <input
-            bind:value={name}
-            class="input"
-            name="name"
-            minlength="2"
-            maxlength="250"
-            placeholder="Event name"
-            required
-            autocomplete="off"
-          />
-
-          <div class="flex flex-col gap-4 min-[365px]:flex-row">
-            <label class="w-full">
-              <span>Date</span>
-              <input
-                bind:value={date}
-                class="input"
-                name="date"
-                min={new Date().toISOString().split('T')[0]}
-                type="date"
-                {required}
-              />
-            </label>
-            <label class="w-full">
-              <span>Time</span>
-              <input class="input" bind:value={time} name="time" type="time" />
-            </label>
-          </div>
-
-          <label>
-            <span>Description</span>
-            <textarea
-              bind:value={description}
-              class="input"
-              name="description"
-              placeholder="Add a description"
-              maxlength="250"
+        <h1 class="mb-2 flex">
+          eventSHARE <svg
+            class="h-8 mt-1 ml-1 fill-base-content"
+            focusable="false"
+            aria-hidden="true"
+            viewBox="0 0 22 22"
+          >
+            <path
+              d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
             />
-          </label>
-
-          <button type="submit" class="mt-4 create-link" disabled={isLoading}>
-            {#if isLoading}
-              <Loader />
-            {:else}
-              <span
-                ><svg
-                  class="h-4 mr-1.5 fill-gray-800"
-                  focusable="false"
-                  aria-hidden="true"
-                  viewBox="2 5 20 12"
-                  ><path
-                    d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
-                  /></svg
-                ></span
-              >
-
-              Get Link
-            {/if}
-          </button>
-        </form>
+          </svg>
+        </h1>
+        <h2>a better way to share events</h2>
       </div>
+      <div class="flex gap-20">
+        <div>
+          <h3>How it Works</h3>
+          <div class="my-2 flex max-w-sm flex-col gap-2 text-left">
+            <div class="flex gap-2">
+              <svg
+                width="20"
+                height="20"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                class="inline-block h-6 w-6 stroke-current"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                /></svg
+              > Create an event
+            </div>
+            <div class="flex gap-2">
+              <svg
+                width="20"
+                height="20"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                class="inline-block h-6 w-6 stroke-current"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                /></svg
+              >Get the link
+            </div>
+            <div class="flex gap-2">
+              <svg
+                width="20"
+                height="20"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                class="inline-block h-6 w-6 stroke-current"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                /></svg
+              > Share!
+            </div>
+          </div>
+        </div>
+        <div>
+          <form on:submit|preventDefault={onSubmit}>
+            <div class="form-control">
+              <label for="name">Name</label>
+              <input
+                bind:value={name}
+                class="input-bordered"
+                id="name"
+                name="name"
+                title="Name"
+                minlength="2"
+                maxlength="250"
+                placeholder="Event name"
+                required
+                autocomplete="off"
+              />
+            </div>
+
+            <div class="flex flex-col gap-4 min-[365px]:flex-row">
+              <div class="form-control">
+                <label for="date">Date</label>
+                <input
+                  bind:value={date}
+                  class="input-bordered"
+                  name="date"
+                  id="date"
+                  min={new Date().toISOString().split('T')[0]}
+                  type="date"
+                  {required}
+                />
+              </div>
+              <div class="form-control">
+                <label for="time"> Time </label>
+                <input id="time" class="input-bordered" bind:value={time} name="time" type="time" />
+              </div>
+            </div>
+
+            <div class="form-control">
+              <label for="description">Description</label>
+              <textarea
+                bind:value={description}
+                id="description"
+                class="input-bordered"
+                name="description"
+                placeholder="Add a description"
+                maxlength="250"
+              />
+            </div>
+
+            <button type="submit" class="mt-4 create-link" disabled={isLoading}>
+              {#if isLoading}
+                <Loader />
+              {:else}
+                <span
+                  ><svg
+                    class="h-4 mr-1.5 fill-gray-800"
+                    focusable="false"
+                    aria-hidden="true"
+                    viewBox="2 5 20 12"
+                    ><path
+                      d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
+                    /></svg
+                  ></span
+                >
+
+                Get Link
+              {/if}
+            </button>
+          </form>
+        </div>
+      </div>
+
       {#if ue}
         <div class="flex pt-4 gap-4 border-gray-600 mt-4">
           <label class="w-full">
             Shareable Link
             <input
-              class="input ring-color-blue bg-gray-300 text-xs "
+              class="ring-color-blue bg-gray-300 text-xs "
               on:click={select}
               value={`${$page.url}${ue.id}`}
             />
@@ -171,8 +245,8 @@
 </div>
 
 <style lang="postcss">
-  .input {
-    @apply focus:border-fuchsia-500 focus:outline-0 focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-2 focus:ring-offset-gray-800;
+  .form-control {
+    @apply w-full;
   }
   .ring-color-blue {
     @apply focus:border-blue-500 focus:ring-blue-500;
@@ -185,8 +259,5 @@
   }
   .view-link {
     @apply inline-flex rounded-md items-center bg-gray-600 border border-transparent  px-4 py-3.5 font-medium leading-4 shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-gray-800 focus:ring-offset-2;
-  }
-  .label {
-    @apply ml-1;
   }
 </style>

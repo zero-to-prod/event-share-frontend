@@ -11,15 +11,13 @@
 </script>
 
 <div>
-  <label for={id} class="block hidden text-sm text-gray-700">{title}</label>
-  <div class="mt-1">
-    <input
-      bind:value
-      use:typeAction
-      {name}
-      {id}
-      class="p-3 text-gray-700 border block w-full rounded-md shadow-sm sm:text-sm"
-      {placeholder}
-    />
-  </div>
+  <label for={id}>{title}</label>
+  <input
+    bind:value
+    use:typeAction
+    {name}
+    {id}
+    class="p-3 text-gray-700 border block w-full rounded-md shadow-sm sm:text-sm"
+    {placeholder}
+  />
 </div>

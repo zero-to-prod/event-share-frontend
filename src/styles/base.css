@@ -19,13 +19,21 @@ h4 {
 }
 
 input, textarea {
-    @apply bg-base-100 border rounded block w-full p-1 sm:p-2 mt-[.125rem] sm:mt-1;
+    @apply bg-base-100 inline-block rounded w-full px-4;
+}
+
+input {
+    @apply h-12 ;
+}
+
+textarea {
+    @apply h-24 py-2;
 }
 
 label {
-    @apply px-2 py-1
+    @apply px-1 py-2;
 }
 
 form {
-    @apply flex flex-col space-y-1 sm:space-y-2;
+    @apply flex flex-col;
 }
