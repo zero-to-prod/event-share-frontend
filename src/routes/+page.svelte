@@ -62,13 +62,13 @@
 </script>
 
 <div
-  class="flex flex-col justify-center bg-gradient-to-br pb-12 text-white from-primary to-secondary"
+  class="flex flex-col justify-center bg-gradient-to-br from-primary to-secondary pb-12 text-white p-6"
 >
   <div class="mt-10 text-center">
     <h1 class="mb-2">eventSHARE</h1>
     <h2>Create. Share. Easy.</h2>
   </div>
-  <div class="flex flex-col">
+  <div class="flex flex-col gap-6">
     <div class="m-auto">
       <h3>How it works</h3>
       <div class="flex gap-2">
@@ -126,18 +126,25 @@
         Share!
       </div>
     </div>
-    <div>
-      <form class="px-5">
-        <div class="flex">
-          <label class="m-auto" for="1">Name</label>
-          <input
-            class="h-auto rounded-none bg-transparent p-0 outline-none focus:border-b-2"
-            id="1"
-            placeholder="Event name"
-          />
-        </div>
-      </form>
-    </div>
+    <h2>Try it now</h2>
+    <form class="p-2 border-2 rounded-lg border-gray-100/20">
+      <div class="flex">
+        <label class="m-auto" for="name">Name</label>
+        <input
+          class="h-auto rounded-none bg-transparent p-0 outline-none focus:border-b-2"
+          id="name"
+          placeholder="Event name"
+        />
+      </div>
+      <div class="flex">
+        <label class="m-auto" for="1">Name</label>
+        <input
+          class="h-auto rounded-none bg-transparent p-0 outline-none focus:border-b-2"
+          id="1"
+          placeholder="Event name"
+        />
+      </div>
+    </form>
   </div>
 </div>
 
