@@ -128,9 +128,9 @@
     </div>
     <div>
       <h3>Try it now</h3>
-      <form class="p-2 border-2 rounded-lg border-gray-100/20">
+      <form class="flex gap-1 p-2 border-2 rounded-lg border-gray-100/20">
         <div class="flex space-x-4">
-          <label class="m-auto" for="name">Name</label>
+          <label class="w-16" for="name">Name</label>
           <input
             bind:value={name}
             class="h-8 m-auto rounded-none bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
@@ -144,11 +144,15 @@
             autocomplete="off"
           />
         </div>
+        <div class="flex">
+          <button>Has Time</button>
+          <button>Description</button>
+        </div>
         <div class="flex space-x-4">
-          <label for="date">Date</label>
+          <label class="w-16" for="date">Date</label>
           <input
             bind:value={date}
-            class="bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
+            class="h-8 m-auto rounded-none bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
             name="date"
             id="date"
             min={new Date().toISOString().split('T')[0]}
@@ -156,14 +160,26 @@
             {required}
           />
         </div>
+
         <div class="flex space-x-4">
-          <label for="time"> Time </label>
+          <label class="w-16" for="time">Time</label>
           <input
             id="time"
-            class="bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
+            class="h-8 m-auto rounded-none bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
             bind:value={time}
             name="time"
             type="time"
+          />
+        </div>
+        <div class="flex space-x-4">
+          <label for="description" class="w-16">Desc.</label>
+          <textarea
+            bind:value={description}
+            id="description"
+            class="m-auto rounded-none pt-2 bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
+            name="description"
+            placeholder="Add a description"
+            maxlength="250"
           />
         </div>
         <button type="submit" class="mt-4 create-link" disabled={isLoading}>
@@ -181,7 +197,6 @@
                 /></svg
               ></span
             >
-
             Get Link
           {/if}
         </button>
