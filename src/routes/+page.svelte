@@ -16,6 +16,17 @@
     isLoading = value;
   });
 
+  let has_time = false;
+  let has_description = false;
+
+  function toggle_time() {
+    has_time = !has_time;
+  }
+
+  function toggle_description() {
+    has_description = !has_description;
+  }
+
   $: required = !!time;
 
   let combined_time = () => {
@@ -64,11 +75,11 @@
 <div
   class="flex flex-col justify-center bg-gradient-to-br from-primary to-secondary pb-12 text-white p-6"
 >
-  <div class="mt-10 text-center">
+  <div class="mt-4 text-center">
     <h1 class="mb-2">eventSHARE</h1>
     <h2>Create. Share. Easy.</h2>
   </div>
-  <div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-8">
     <div class="m-auto">
       <h3>How it works</h3>
       <div class="flex gap-2">
@@ -127,8 +138,11 @@
       </div>
     </div>
     <div>
-      <h3>Try it now</h3>
-      <form class="flex gap-1 p-2 border-2 rounded-lg border-gray-100/20">
+      <h3 class="text-center mb-2">Create an Event to Share</h3>
+      <form
+        on:submit|preventDefault={onSubmit}
+        class="flex gap-1 p-2 border-2 rounded-lg border-gray-100/20"
+      >
         <div class="flex space-x-4">
           <label class="w-16" for="name">Name</label>
           <input
@@ -144,10 +158,6 @@
             autocomplete="off"
           />
         </div>
-        <div class="flex">
-          <button>Has Time</button>
-          <button>Description</button>
-        </div>
         <div class="flex space-x-4">
           <label class="w-16" for="date">Date</label>
           <input
@@ -160,29 +170,48 @@
             {required}
           />
         </div>
-
-        <div class="flex space-x-4">
-          <label class="w-16" for="time">Time</label>
-          <input
-            id="time"
-            class="h-8 m-auto rounded-none bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
-            bind:value={time}
-            name="time"
-            type="time"
-          />
+        <div class="flex gap-4">
+          <div class="flex">
+            <input type="checkbox" name="has_time" id="has_time" on:click={toggle_time} />
+            <label for="has_time">Set a Time</label>
+          </div>
+          <div class="flex">
+            <input
+              type="checkbox"
+              name="has_description"
+              id="has_description"
+              on:click={toggle_description}
+            />
+            <label for="has_description">Add a Description</label>
+          </div>
         </div>
-        <div class="flex space-x-4">
-          <label for="description" class="w-16">Desc.</label>
-          <textarea
-            bind:value={description}
-            id="description"
-            class="m-auto rounded-none pt-2 bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
-            name="description"
-            placeholder="Add a description"
-            maxlength="250"
-          />
-        </div>
-        <button type="submit" class="mt-4 create-link" disabled={isLoading}>
+        {#if has_time}
+          <div class="flex space-x-4">
+            <label class="w-16" for="time">Time</label>
+            <input
+              id="time"
+              class="h-8 m-auto rounded-none bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
+              bind:value={time}
+              name="time"
+              type="time"
+            />
+          </div>
+        {/if}
+        {#if has_description}
+          <div class="flex space-x-4">
+            <label for="description" class="w-16">Desc.</label>
+            <textarea
+              bind:value={description}
+              id="description"
+              class=" rounded-none bg-transparent outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
+              name="description"
+              placeholder="Add a description"
+              rows="2"
+              maxlength="250"
+            />
+          </div>
+        {/if}
+        <button type="submit" disabled={isLoading}>
           {#if isLoading}
             <Loader />
           {:else}
@@ -201,6 +230,42 @@
           {/if}
         </button>
       </form>
+      {#if ue}
+        <div class="mt-4 flex gap-4 border-gray-600 pt-4">
+          <label class="w-full">
+            Shareable Link
+            <input
+              class="bg-gray-300 text-xs ring-color-blue"
+              on:click={select}
+              value={`${$page.url}${ue.id}`}
+            />
+          </label>
+          <div class="mt-auto">
+            <a href={`${$page.url}${ue.id}`}>
+              <button type="submit" class="view-link"
+                ><span
+                  ><svg class="mr-2 h-4" focusable="false" aria-hidden="true" viewBox="0 0 22 22"
+                    ><path
+                      d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"
+                    /></svg
+                  ></span
+                >View
+              </button>
+            </a>
+          </div>
+          <div class="mt-auto">
+            <button type="submit" class="share-link" on:click={share}
+              ><span
+                ><svg class="mr-2 h-4" focusable="false" aria-hidden="true" viewBox="0 0 22 22"
+                  ><path
+                    d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+                  /></svg
+                ></span
+              >Share
+            </button>
+          </div>
+        </div>
+      {/if}
     </div>
   </div>
 </div>
@@ -399,23 +464,7 @@
 
 <!--</div>-->
 <style lang="postcss">
-  .form-control {
-    @apply w-full;
-  }
-
-  .ring-color-blue {
-    @apply focus:border-blue-500 focus:ring-blue-500;
-  }
-
   .create-link {
     @apply justify-center inline-flex rounded-md items-center border border-transparent bg-fuchsia-600 px-4 py-3.5 font-medium leading-4 shadow-sm hover:bg-fuchsia-700 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-gray-800 focus:ring-offset-2;
-  }
-
-  .share-link {
-    @apply inline-flex rounded-md items-center border border-transparent bg-blue-600 px-4 py-3.5 font-medium leading-4 shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-gray-800 focus:ring-offset-2;
-  }
-
-  .view-link {
-    @apply inline-flex rounded-md items-center bg-gray-600 border border-transparent  px-4 py-3.5 font-medium leading-4 shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-gray-800 focus:ring-offset-2;
   }
 </style>
