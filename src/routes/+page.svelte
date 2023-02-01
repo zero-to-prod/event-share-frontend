@@ -68,7 +68,7 @@
     <h1 class="mb-2">eventSHARE</h1>
     <h2>Create. Share. Easy.</h2>
   </div>
-  <div class="flex flex-col gap-6">
+  <div class="flex flex-col gap-4">
     <div class="m-auto">
       <h3>How it works</h3>
       <div class="flex gap-2">
@@ -126,25 +126,67 @@
         Share!
       </div>
     </div>
-    <h2>Try it now</h2>
-    <form class="p-2 border-2 rounded-lg border-gray-100/20">
-      <div class="flex">
-        <label class="m-auto" for="name">Name</label>
-        <input
-          class="h-auto rounded-none bg-transparent p-0 outline-none focus:border-b-2"
-          id="name"
-          placeholder="Event name"
-        />
-      </div>
-      <div class="flex">
-        <label class="m-auto" for="1">Name</label>
-        <input
-          class="h-auto rounded-none bg-transparent p-0 outline-none focus:border-b-2"
-          id="1"
-          placeholder="Event name"
-        />
-      </div>
-    </form>
+    <div>
+      <h3>Try it now</h3>
+      <form class="p-2 border-2 rounded-lg border-gray-100/20">
+        <div class="flex space-x-4">
+          <label class="m-auto" for="name">Name</label>
+          <input
+            bind:value={name}
+            class="h-8 m-auto rounded-none bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
+            id="name"
+            name="name"
+            title="Name"
+            minlength="2"
+            maxlength="250"
+            placeholder="Something awesome!"
+            required
+            autocomplete="off"
+          />
+        </div>
+        <div class="flex space-x-4">
+          <label for="date">Date</label>
+          <input
+            bind:value={date}
+            class="bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
+            name="date"
+            id="date"
+            min={new Date().toISOString().split('T')[0]}
+            type="date"
+            {required}
+          />
+        </div>
+        <div class="flex space-x-4">
+          <label for="time"> Time </label>
+          <input
+            id="time"
+            class="bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
+            bind:value={time}
+            name="time"
+            type="time"
+          />
+        </div>
+        <button type="submit" class="mt-4 create-link" disabled={isLoading}>
+          {#if isLoading}
+            <Loader />
+          {:else}
+            <span
+              ><svg
+                class="h-4 mr-1.5 fill-gray-800"
+                focusable="false"
+                aria-hidden="true"
+                viewBox="2 5 20 12"
+                ><path
+                  d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
+                /></svg
+              ></span
+            >
+
+            Get Link
+          {/if}
+        </button>
+      </form>
+    </div>
   </div>
 </div>
 
