@@ -3,7 +3,7 @@ body {
 }
 
 button {
-    @apply inline-flex bg-neutral hover:bg-neutral-focus text-neutral-content items-center rounded-md border border-transparent px-3 py-2 text-sm font-medium leading-4 shadow-sm focus:outline-none;
+    @apply inline-flex bg-neutral hover:bg-neutral-focus text-neutral-content justify-center items-center rounded-md border border-transparent px-3 py-2 text-sm font-medium leading-4 shadow-sm focus:outline-none;
 }
 
 button:active {

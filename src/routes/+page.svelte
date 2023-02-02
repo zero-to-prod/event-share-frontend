@@ -4,6 +4,7 @@
   import { page } from '$app/stores';
   import { localLoading } from '../stores';
   import Loader from '../components/Loader.svelte';
+  import { slide } from 'svelte/transition';
 
   let name: Ue['name'];
   let date: string | undefined = undefined;
@@ -143,7 +144,7 @@
       <h3 class="text-center sm:text-left">Create an Event to Share</h3>
       <form
         on:submit|preventDefault={onSubmit}
-        class="flex gap-1 p-2 border-2 rounded-lg border-gray-100/20 mx-auto"
+        class="flex gap-1 p-2 border-2 rounded-lg border-gray-100/20 mx-auto transition-all duration-500"
       >
         <div class="flex space-x-4">
           <label class="w-16" for="name">Name</label>
@@ -188,7 +189,7 @@
           </div>
         </div>
         {#if has_time}
-          <div class="flex space-x-4">
+          <div transition:slide class="flex space-x-4">
             <label class="w-16" for="time">Time</label>
             <input
               id="time"
@@ -200,7 +201,7 @@
           </div>
         {/if}
         {#if has_description}
-          <div class="flex space-x-4">
+          <div transition:slide class="flex space-x-4">
             <label for="description" class="w-16">Desc.</label>
             <textarea
               bind:value={description}
@@ -217,16 +218,14 @@
           {#if isLoading}
             <Loader />
           {:else}
-            <span
-              ><svg
-                class="h-4 mr-1.5 fill-neutral-content"
-                focusable="false"
-                aria-hidden="true"
-                viewBox="2 5 20 12"
-                ><path
-                  d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
-                /></svg
-              ></span
+            <svg
+              class="h-4 mr-1.5 fill-neutral-content"
+              focusable="false"
+              aria-hidden="true"
+              viewBox="2 5 20 12"
+              ><path
+                d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"
+              /></svg
             >
             Get Link
           {/if}
