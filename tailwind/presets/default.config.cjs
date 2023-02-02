@@ -4,6 +4,9 @@ module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     extend: {
+      scale: {
+        '98': '.98',
+      },
       colors: {
         black: '#010409',
         /* Primary */

@@ -73,68 +73,70 @@
 </script>
 
 <div
-  class="flex flex-col justify-center bg-gradient-to-br from-primary to-secondary pb-12 text-white p-6"
+  class="flex flex-col justify-center bg-gradient-to-br from-primary to-secondary pb-12 text-white sm:p-6"
 >
   <div class="my-4 text-center">
     <h1 class="mb-2">eventSHARE</h1>
-    <h2>Create. Share. Easy.</h2>
+    <h2 class="mb-2">Create. Share. Easy.</h2>
   </div>
-  <div class="flex flex-col sm:flex-row m-auto align-top gap-8">
+  <div class="flex flex-col sm:flex-row m-auto align-top gap-6 sm:gap-8">
     <div class="m-auto sm:m-0">
       <h3>How it works</h3>
-      <div class="flex gap-2">
-        <svg
-          width="20"
-          height="20"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          class="inline-block h-6 w-6 stroke-current"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        Create an event
-      </div>
-      <div class="flex gap-2">
-        <svg
-          width="20"
-          height="20"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          class="inline-block h-6 w-6 stroke-current"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        Get a link
-      </div>
-      <div class="flex gap-2">
-        <svg
-          width="20"
-          height="20"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          class="inline-block h-6 w-6 stroke-current"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        Share!
+      <div class="flex flex-col gap-2">
+        <div class="flex gap-2">
+          <svg
+            width="20"
+            height="20"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="inline-block h-6 w-6 stroke-current"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          Create an event
+        </div>
+        <div class="flex gap-2">
+          <svg
+            width="20"
+            height="20"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="inline-block h-6 w-6 stroke-current"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          Get a link
+        </div>
+        <div class="flex gap-2">
+          <svg
+            width="20"
+            height="20"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="inline-block h-6 w-6 stroke-current"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          Share!
+        </div>
       </div>
     </div>
     <div>

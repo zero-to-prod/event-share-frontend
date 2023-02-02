@@ -3,7 +3,11 @@ body {
 }
 
 button {
-    @apply inline-flex bg-neutral hover:bg-neutral-focus text-neutral-content items-center rounded-md border border-transparent px-3 py-2 text-sm font-medium leading-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+    @apply inline-flex bg-neutral hover:bg-neutral-focus text-neutral-content items-center rounded-md border border-transparent px-3 py-2 text-sm font-medium leading-4 shadow-sm focus:outline-none;
+}
+
+button:active {
+    @apply transition duration-75 ease-in-out focus:scale-y-98 focus:scale-x-98 translate-y-[1px] transform-gpu;
 }
 
 h1 {

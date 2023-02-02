@@ -4,7 +4,7 @@
 @import "styles/color_themes/dark.css";
 
 @import "tailwindcss/components";
-@import "styles/components/form-control.css";
+
 
 @import "tailwindcss/utilities";
 @import "styles/utilities/input-bordered.css";
