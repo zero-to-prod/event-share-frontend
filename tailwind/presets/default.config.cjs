@@ -14,7 +14,10 @@ module.exports = {
         'secondary': "var(--secondary)", // Secondary color
         'secondary-focus': "var(--secondary-focus)", // Secondary color when focused
         'secondary-content': "var(--secondary-content)", // Foreground content color to use on secondary color
+        /* Neutral */
         'neutral': "var(--neutral)", // Neutral color
+        'neutral-focus': "var(--neutral-focus)", // Neutral color when focused
+        'neutral-content': "var(--neutral-content)", // Will be a readable tone of neutral if not specified
         /* Base */
         'base-100': "var(--base-100)", // Base color of page, used for blank backgrounds
         'base-200': "var(--base-200)", // Base color, a little darker

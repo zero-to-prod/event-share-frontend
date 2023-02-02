@@ -75,12 +75,12 @@
 <div
   class="flex flex-col justify-center bg-gradient-to-br from-primary to-secondary pb-12 text-white p-6"
 >
-  <div class="mt-4 text-center">
+  <div class="my-4 text-center">
     <h1 class="mb-2">eventSHARE</h1>
     <h2>Create. Share. Easy.</h2>
   </div>
-  <div class="flex flex-col gap-8">
-    <div class="m-auto">
+  <div class="flex flex-col sm:flex-row m-auto align-top gap-8">
+    <div class="m-auto sm:m-0">
       <h3>How it works</h3>
       <div class="flex gap-2">
         <svg
@@ -138,10 +138,10 @@
       </div>
     </div>
     <div>
-      <h3 class="text-center mb-2">Create an Event to Share</h3>
+      <h3 class="text-center sm:text-left">Create an Event to Share</h3>
       <form
         on:submit|preventDefault={onSubmit}
-        class="flex gap-1 p-2 border-2 rounded-lg border-gray-100/20"
+        class="flex gap-1 p-2 border-2 rounded-lg border-gray-100/20 mx-auto"
       >
         <div class="flex space-x-4">
           <label class="w-16" for="name">Name</label>
@@ -211,13 +211,13 @@
             />
           </div>
         {/if}
-        <button type="submit" disabled={isLoading}>
+        <button disabled={isLoading}>
           {#if isLoading}
             <Loader />
           {:else}
             <span
               ><svg
-                class="h-4 mr-1.5 fill-gray-800"
+                class="h-4 mr-1.5 fill-neutral-content"
                 focusable="false"
                 aria-hidden="true"
                 viewBox="2 5 20 12"
@@ -464,7 +464,4 @@
 
 <!--</div>-->
 <style lang="postcss">
-  .create-link {
-    @apply justify-center inline-flex rounded-md items-center border border-transparent bg-fuchsia-600 px-4 py-3.5 font-medium leading-4 shadow-sm hover:bg-fuchsia-700 focus:outline-none focus:ring-2 focus:ring-fuchsia-500 focus:ring-offset-gray-800 focus:ring-offset-2;
-  }
 </style>
