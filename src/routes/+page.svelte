@@ -173,7 +173,7 @@
         <div class="flex gap-4">
           <div class="flex">
             <input type="checkbox" name="has_time" id="has_time" on:click={toggle_time} />
-            <label for="has_time">Set a Time</label>
+            <label for="has_time">Set a time</label>
           </div>
           <div class="flex">
             <input
@@ -182,7 +182,7 @@
               id="has_description"
               on:click={toggle_description}
             />
-            <label for="has_description">Add a Description</label>
+            <label for="has_description">Add a description</label>
           </div>
         </div>
         {#if has_time}
