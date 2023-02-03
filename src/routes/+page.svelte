@@ -22,10 +22,12 @@
 
   function toggle_time() {
     has_time = !has_time;
+    time = undefined;
   }
 
   function toggle_description() {
     has_description = !has_description;
+    description = undefined;
   }
 
   $: required = !!time;
@@ -82,8 +84,8 @@
   </div>
   <div class="flex flex-col sm:flex-row m-auto align-top gap-6 sm:gap-8">
     <div class="m-auto sm:m-0">
-      <h3>How it works</h3>
-      <div class="flex flex-col gap-2">
+      <h3 class="mb-4">How it works</h3>
+      <div class="flex flex-col gap-4">
         <div class="flex gap-2">
           <svg
             width="20"
@@ -138,16 +140,17 @@
           </svg>
           Share!
         </div>
+        <div class="mt-4">SMS | EMAIL | SOCIAL MEDIA</div>
       </div>
     </div>
     <div>
-      <h3 class="text-center sm:text-left">Create an Event to Share</h3>
+      <h3 class="text-center sm:text-left ml-3">Create an Event to Share</h3>
       <form
         on:submit|preventDefault={onSubmit}
         class="flex gap-1 p-2 border-2 rounded-lg border-gray-100/20 mx-auto transition-all duration-500"
       >
         <div class="flex space-x-4">
-          <label class="w-16" for="name">Name</label>
+          <label class="w-16 font-bold" for="name">Name</label>
           <input
             bind:value={name}
             class="h-8 m-auto rounded-none bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
@@ -162,7 +165,7 @@
           />
         </div>
         <div class="flex space-x-4">
-          <label class="w-16" for="date">Date</label>
+          <label class="w-16 font-bold" for="date">Date</label>
           <input
             bind:value={date}
             class="h-8 m-auto rounded-none bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
@@ -190,7 +193,7 @@
         </div>
         {#if has_time}
           <div transition:slide class="flex space-x-4">
-            <label class="w-16" for="time">Time</label>
+            <label class="w-16 font-bold" for="time">Time</label>
             <input
               id="time"
               class="h-8 m-auto rounded-none bg-transparent p-0 outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
@@ -201,12 +204,12 @@
           </div>
         {/if}
         {#if has_description}
-          <div transition:slide class="flex space-x-4">
-            <label for="description" class="w-16">Desc.</label>
+          <div transition:slide class="mb-2">
+            <label for="description" class="w-16 font-bold">Desc.</label>
             <textarea
               bind:value={description}
               id="description"
-              class=" rounded-none bg-transparent outline-none border-gray-100/20 border-b-2 focus:border-gray-100/80"
+              class="p-2 bg-transparent outline-none border-gray-100/20 border-2 focus:border-gray-100/80"
               name="description"
               placeholder="Add a description"
               rows="2"
@@ -465,4 +468,8 @@
 
 <!--</div>-->
 <style lang="postcss">
+  input[type='date'],
+  input[type='time'] {
+    color-scheme: dark;
+  }
 </style>

@@ -27,7 +27,7 @@ h4 {
 }
 
 input, textarea {
-    @apply bg-base-100 inline-block rounded w-full px-4;
+    @apply bg-base-100 inline-block rounded w-full px-4 border-transparent;
 }
 
 input {
