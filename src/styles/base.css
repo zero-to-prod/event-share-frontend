@@ -1,0 +1,51 @@
+body {
+    @apply bg-base-100 text-base-content;
+}
+
+button {
+    @apply inline-flex bg-neutral hover:bg-neutral-focus text-neutral-content justify-center items-center rounded-md border border-transparent px-3 py-2 text-sm font-medium leading-4 shadow-sm focus:outline-none;
+}
+
+button:active {
+    @apply transition duration-75 ease-in-out focus:scale-y-98 focus:scale-x-98 translate-y-[1px] transform-gpu;
+}
+
+h1 {
+    @apply mb-8 text-4xl font-extrabold leading-none;
+}
+
+h2 {
+    @apply mb-6 text-2xl font-bold leading-snug;
+}
+
+h3 {
+    @apply mb-3 text-xl font-semibold leading-relaxed;
+}
+
+h4 {
+    @apply mb-2 font-semibold;
+}
+
+input, textarea {
+    @apply bg-base-100 inline-block rounded w-full px-4 border-transparent;
+}
+
+input {
+    @apply h-12 ;
+}
+
+input[type=checkbox] {
+    @apply bg-base-100 inline-block rounded w-full px-4 h-10 w-auto;
+}
+
+textarea {
+    @apply p-0 pt-2;
+}
+
+label {
+    @apply px-1 py-2;
+}
+
+form {
+    @apply flex flex-col;
+}

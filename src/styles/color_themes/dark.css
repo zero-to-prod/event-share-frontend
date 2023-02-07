@@ -1,0 +1,17 @@
+.dark {
+    --primary: #570df8;
+    --primary-focus: #5114b9;
+    --primary-content: #ffffff;
+    --secondary: #d926aa;
+    --secondary-focus: #ae1e88;
+    --secondary-content: #ffffff;
+    --neutral: #191d24;
+    --neutral-focus: #111318;
+    --neutral-content: #a6adbb;
+    --base-100: #2a303c;
+    --base-200: #242933;
+    --base-300: #20252e;
+    --base-content: #a6adbb;
+    --border-opacity: .2;
+    --border-color: 220 13.376% 69.216%;
+}

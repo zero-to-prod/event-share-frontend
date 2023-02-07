@@ -1,7 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "styles/base.css";
+@import "styles/color_themes/root.css";
+@import "styles/color_themes/dark.css";
 
-.hero-bg {
-    @apply bg-gradient-to-r from-violet-500 to-fuchsia-500;
+@import "tailwindcss/components";
+
+
+@import "tailwindcss/utilities";
+@import "styles/utilities/input-bordered.css";
+
+@layer components {
+    .hero-bg {
+        @apply bg-gradient-to-r from-violet-500 to-fuchsia-500;
+    }
 }
